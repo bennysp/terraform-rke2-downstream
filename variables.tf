@@ -118,7 +118,7 @@ variable "use_existing_machine_configs" {
 }
 
 variable "cp_machine_config_kind" {
-  description = "Machine config kind for control-plane pool when use_existing_machine_configs is true (for example ProxmoxveConfig)."
+  description = "Machine config kind for control-plane pool when use_existing_machine_configs is true (for example PveConfig)."
   type        = string
   default     = ""
 }
@@ -130,7 +130,7 @@ variable "cp_machine_config_name" {
 }
 
 variable "worker_machine_config_kind" {
-  description = "Machine config kind for worker pool when use_existing_machine_configs is true (for example ProxmoxveConfig)."
+  description = "Machine config kind for worker pool when use_existing_machine_configs is true (for example PveConfig)."
   type        = string
   default     = ""
 }
