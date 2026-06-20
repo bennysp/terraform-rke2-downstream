@@ -105,6 +105,48 @@ variable "rancher_pool_numworkersmax" {
   default = 3
 }
 
+variable "rancher_cloud_credential_name" {
+  description = "Rancher cloud credential name used by downstream machine pools."
+  type        = string
+  default     = "vcenter-cred"
+}
+
+variable "use_existing_machine_configs" {
+  description = "If true, reuse externally managed machine configs by kind/name instead of creating vSphere configs in this module."
+  type        = bool
+  default     = false
+}
+
+variable "cp_machine_config_kind" {
+  description = "Machine config kind for control-plane pool when use_existing_machine_configs is true (for example ProxmoxveConfig)."
+  type        = string
+  default     = ""
+}
+
+variable "cp_machine_config_name" {
+  description = "Machine config name for control-plane pool when use_existing_machine_configs is true."
+  type        = string
+  default     = ""
+}
+
+variable "worker_machine_config_kind" {
+  description = "Machine config kind for worker pool when use_existing_machine_configs is true (for example ProxmoxveConfig)."
+  type        = string
+  default     = ""
+}
+
+variable "worker_machine_config_name" {
+  description = "Machine config name for worker pool when use_existing_machine_configs is true."
+  type        = string
+  default     = ""
+}
+
+variable "machine_config_api_version" {
+  description = "API version for machine_config block in cluster_v2 machine pools."
+  type        = string
+  default     = "rke-machine-config.cattle.io/v1"
+}
+
 variable "kubeconfig_path" {
   type    = string
   default = "~/.kube/config.downstream"

@@ -1,4 +1,6 @@
 resource "rancher2_machine_config_v2" "ranchmaster" {
+  count = var.use_existing_machine_configs ? 0 : 1
+
   generate_name = "machine-master"
 
   timeouts {
@@ -42,6 +44,8 @@ EOF
 }
 
 resource "rancher2_machine_config_v2" "ranchworker" {
+  count = var.use_existing_machine_configs ? 0 : 1
+
   generate_name = "machine-worker"
 
   timeouts {

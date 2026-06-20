@@ -17,7 +17,14 @@ resource "rancher2_cloud_credential" "minio_local_secret" {
 }
 
 data "rancher2_cloud_credential" "vcenter_cred" {
-  name = "vcenter-cred"
+  name = var.rancher_cloud_credential_name
+}
+
+locals {
+  cp_machine_config_kind     = var.use_existing_machine_configs ? var.cp_machine_config_kind : rancher2_machine_config_v2.ranchmaster[0].kind
+  cp_machine_config_name     = var.use_existing_machine_configs ? var.cp_machine_config_name : rancher2_machine_config_v2.ranchmaster[0].name
+  worker_machine_config_kind = var.use_existing_machine_configs ? var.worker_machine_config_kind : rancher2_machine_config_v2.ranchworker[0].kind
+  worker_machine_config_name = var.use_existing_machine_configs ? var.worker_machine_config_name : rancher2_machine_config_v2.ranchworker[0].name
 }
 
 resource "rancher2_cluster_v2" "rancher_cluster" {
@@ -40,8 +47,9 @@ resource "rancher2_cluster_v2" "rancher_cluster" {
       quantity                     = var.rancher_pool_numcps
 
       machine_config {
-        kind = rancher2_machine_config_v2.ranchmaster.kind
-        name = rancher2_machine_config_v2.ranchmaster.name
+        api_version = var.machine_config_api_version
+        kind        = local.cp_machine_config_kind
+        name        = local.cp_machine_config_name
       }
     }
 
@@ -54,8 +62,9 @@ resource "rancher2_cluster_v2" "rancher_cluster" {
       quantity                     = var.rancher_pool_numworkersmin
 
       machine_config {
-        kind = rancher2_machine_config_v2.ranchworker.kind
-        name = rancher2_machine_config_v2.ranchworker.name
+        api_version = var.machine_config_api_version
+        kind        = local.worker_machine_config_kind
+        name        = local.worker_machine_config_name
       }
 
       annotations = {
