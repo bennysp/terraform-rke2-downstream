@@ -22,7 +22,7 @@ resource "rancher2_machine_config_v2" "ranchmaster" {
     vapp_property     = var.vapp_property
     tags              = var.tags
     cfgparam          = var.cfgparam
-    cloud_config = <<EOF
+    cloud_config      = <<EOF
 #cloud-config
 runcmd:
   - 'hostnamectl set-hostname $(cloud-init query -a | grep "hostname" | cut -d"\"" -f4)'
@@ -67,7 +67,7 @@ resource "rancher2_machine_config_v2" "ranchworker" {
     vapp_property = var.vapp_property
     tags          = var.tags
     cfgparam      = var.cfgparam
-    cloud_config = <<EOF
+    cloud_config  = <<EOF
 #cloud-config
 runcmd:
   - 'hostnamectl set-hostname $(cloud-init query -a | grep "hostname" | cut -d"\"" -f4)'
@@ -81,10 +81,10 @@ EOF
   }
 
   annotations = {
-    git_url                                               = var.git_url
-    git_branch                                            = var.git_branch
-    git_tag                                               = var.git_tag
-    git_commitid                                          = var.git_commitid
+    git_url                                              = var.git_url
+    git_branch                                           = var.git_branch
+    git_tag                                              = var.git_tag
+    git_commitid                                         = var.git_commitid
     "cluster.provisioning.cattle.io/autoscaler-min-size" = var.rancher_pool_numworkersmin
     "cluster.provisioning.cattle.io/autoscaler-max-size" = var.rancher_pool_numworkersmax
   }

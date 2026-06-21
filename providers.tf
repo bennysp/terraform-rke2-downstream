@@ -1,9 +1,9 @@
 provider "minio" {
-  minio_server     = var.minio_server
-  minio_user       = var.MINIO_ACCESS_KEY
-  minio_password   = var.MINIO_SECRET_KEY
-  minio_region     = var.minio_region
-  minio_ssl        = true
+  minio_server   = local.rustfs_endpoint
+  minio_user     = local.rustfs_access_key
+  minio_password = local.rustfs_secret_key
+  minio_region   = var.minio_region
+  minio_ssl      = true
 }
 
 provider "routeros" {

@@ -8,11 +8,11 @@ resource "rancher2_cloud_credential" "minio_local_secret" {
   description = "Credential for Minio"
 
   s3_credential_config {
-    default_endpoint        = "https://nasserv02.domain.thedaily.tv:9000"
+    default_endpoint        = local.rustfs_url
     default_skip_ssl_verify = true
     default_region          = var.s3_region
-    access_key              = var.MINIO_ACCESS_KEY
-    secret_key              = var.MINIO_SECRET_KEY
+    access_key              = local.rustfs_access_key
+    secret_key              = local.rustfs_secret_key
   }
 }
 
@@ -76,7 +76,7 @@ resource "rancher2_cluster_v2" "rancher_cluster" {
         bucket                = minio_s3_bucket.cluster_backup_s3.bucket
         cloud_credential_name = rancher2_cloud_credential.minio_local_secret.id
         folder                = "etcd-backup"
-        endpoint              = var.s3_endpoint
+        endpoint              = local.rustfs_endpoint
         region                = var.s3_region
         skip_ssl_verify       = true
       }

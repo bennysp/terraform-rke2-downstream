@@ -35,6 +35,11 @@ variable "vaultpath_rancher_local" {
   default = "secret/rancher/clusters/local"
 }
 
+variable "vaultpath_rustfs_api" {
+  type    = string
+  default = "secret/rustfs/api"
+}
+
 variable "vault_ca_path" {
   type    = string
   default = "pki/cert/ca"
