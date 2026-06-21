@@ -1,20 +1,3 @@
-resource "aws_s3_bucket" "cluster_backup_s3" {
-  bucket = "rancher-cluster-backup-${local.cluster_name_effective}"
-}
-
-resource "rancher2_cloud_credential" "minio_local_secret" {
-  name        = "minio-local-secret"
-  description = "Credential for Minio"
-
-  s3_credential_config {
-    default_endpoint        = local.rustfs_url
-    default_skip_ssl_verify = true
-    default_region          = var.s3_region
-    access_key              = local.rustfs_access_key
-    secret_key              = local.rustfs_secret_key
-  }
-}
-
 locals {
   cp_machine_config_kind     = var.use_existing_machine_configs ? var.cp_machine_config_kind : rancher2_machine_config_v2.ranchmaster[0].kind
   cp_machine_config_name     = var.use_existing_machine_configs ? var.cp_machine_config_name : rancher2_machine_config_v2.ranchmaster[0].name
@@ -70,15 +53,6 @@ resource "rancher2_cluster_v2" "rancher_cluster" {
 
     etcd {
       snapshot_retention = 60
-
-      s3_config {
-        bucket                = aws_s3_bucket.cluster_backup_s3.bucket
-        cloud_credential_name = rancher2_cloud_credential.minio_local_secret.id
-        folder                = "etcd-backup"
-        endpoint              = local.rustfs_endpoint
-        region                = var.s3_region
-        skip_ssl_verify       = true
-      }
     }
 
     machine_global_config = <<EOF
