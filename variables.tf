@@ -111,39 +111,39 @@ variable "rancher_pool_numworkersmax" {
 }
 
 variable "rancher_cloud_credential_name" {
-  description = "Rancher cloud_credential_secret_name value used by downstream machine pools (for example cattle-global-data:vcenter-cred)."
+  description = "Rancher cloud_credential_secret_name value used by downstream machine pools."
   type        = string
-  default     = "vcenter-cred"
+  default     = "proxmox-cred"
 }
 
 variable "use_existing_machine_configs" {
-  description = "If true, reuse externally managed machine configs by kind/name instead of creating vSphere configs in this module."
+  description = "If true, reuse externally managed machine configs by kind/name instead of creating vSphere configs in this module. Recommended for Proxmox via PveConfig CRs created by management bootstrap."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "cp_machine_config_kind" {
   description = "Machine config kind for control-plane pool when use_existing_machine_configs is true (for example PveConfig)."
   type        = string
-  default     = ""
+  default     = "PveConfig"
 }
 
 variable "cp_machine_config_name" {
   description = "Machine config name for control-plane pool when use_existing_machine_configs is true."
   type        = string
-  default     = ""
+  default     = "cp"
 }
 
 variable "worker_machine_config_kind" {
   description = "Machine config kind for worker pool when use_existing_machine_configs is true (for example PveConfig)."
   type        = string
-  default     = ""
+  default     = "PveConfig"
 }
 
 variable "worker_machine_config_name" {
   description = "Machine config name for worker pool when use_existing_machine_configs is true."
   type        = string
-  default     = ""
+  default     = "worker"
 }
 
 variable "machine_config_api_version" {
@@ -163,40 +163,45 @@ variable "nexus_registry" {
 }
 
 variable "vcenter_host" {
-  type    = string
-  default = "vcenter.domain.thedaily.tv"
+  description = "vSphere endpoint used only when use_existing_machine_configs is false."
+  type        = string
+  default     = ""
 }
 
 variable "datacenter" {
-  type    = string
-  default = "/HOME"
+  description = "vSphere datacenter path used only when use_existing_machine_configs is false."
+  type        = string
+  default     = ""
 }
 
 variable "folder" {
-  type    = string
-  default = "/HOME/vm"
+  description = "vSphere folder path used only when use_existing_machine_configs is false."
+  type        = string
+  default     = ""
 }
 
 variable "datastore" {
-  type    = string
-  default = "/HOME/datastore/datastore-nfs002"
+  description = "vSphere datastore path used only when use_existing_machine_configs is false."
+  type        = string
+  default     = ""
 }
 
 variable "datastore_cluster" {
-  type    = string
-  default = "/HOME/datastore/DatastoreCluster"
+  description = "vSphere datastore cluster path used only when use_existing_machine_configs is false."
+  type        = string
+  default     = ""
 }
 
 variable "pool" {
-  type    = string
-  default = "/HOME/host/cluster01/Resources"
+  description = "vSphere resource pool path used only when use_existing_machine_configs is false."
+  type        = string
+  default     = ""
 }
 
 variable "network" {
-  type = list(string)
-  default = [
-    "/HOME/network/k8s-int-10",
-  ]
+  description = "vSphere network paths used only when use_existing_machine_configs is false."
+  type        = list(string)
+  default     = []
 }
 
 variable "cfgparam" {
@@ -215,8 +220,9 @@ variable "vapp_property" {
 }
 
 variable "vm_template" {
-  type    = string
-  default = "/HOME/vm/Templates/rockylinux-packer/template-rockylinux9"
+  description = "vSphere VM template path used only when use_existing_machine_configs is false."
+  type        = string
+  default     = ""
 }
 
 variable "cp_cpu_count" {
