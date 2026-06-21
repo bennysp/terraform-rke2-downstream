@@ -222,7 +222,7 @@ variable "vapp_property" {
 variable "vm_template" {
   description = "vSphere VM template path used only when use_existing_machine_configs is false."
   type        = string
-  default     = ""
+  default     = "9000"
 }
 
 variable "cp_cpu_count" {
