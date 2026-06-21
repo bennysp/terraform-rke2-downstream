@@ -1,23 +1,26 @@
 # This file is maintained automatically by "tofu init".
 # Manual edits may be lost in future updates.
 
-provider "nexus.ta.domain.thedaily.tv/aminueza/minio" {
-  version     = "2.5.1"
-  constraints = "~> 2.2"
+provider "nexus.ta.domain.thedaily.tv/hashicorp/aws" {
+  version     = "5.100.0"
+  constraints = "~> 5.0"
   hashes = [
-    "h1:03gfmXf78G9h9XCHwavPwAwCjg1xmQIp4e5aAv6xIbI=",
-    "zh:0710a1fcd8e3501237990344160b0193860c2e643e73c728bf832e3d3fde971a",
-    "zh:0b2f25fbb59d056299faec7fb09012ef0545bd25e7ffa55a04a5c10c28908713",
-    "zh:0e0179fe12c855bcf5dbcf6858373eaa6e9dd790010096a3fcc667a23224388d",
-    "zh:23f6118cefb2fae443de98197490a9ba56fa51f1e324d1811709e0fdfc22ed7d",
-    "zh:34875cbaf07fbed8b8c639f38146f19188e57fc2eac4cdeac638b3d675b82ad4",
-    "zh:5b0fc4934533557af0001630801e9e637ab0e1588fd086f0cd04a52f4a13474f",
-    "zh:5d8eda5611ce4017688694e566c00609508a2c3a0e9aa587f6a58dcd1cb9846c",
-    "zh:70855ab6327a1b79b0619d0ed3538513f98fdfadae6fe60e986dbbf2891151f8",
-    "zh:7330d66c56a67a4c36f2fc2f1d7042503f5b4d0ec66a9bbe2b72920fb56b85de",
-    "zh:764597f7be92426cd63f7ae82d2845a1f2677d2b86921f19facf93fdbb80f503",
-    "zh:7dd947c72366377a16adc7bf0c0d09c32ade09dcedbcbf411da057ca970fb9e8",
-    "zh:9db57839cdc1d667271d5589ca4d9e791b665c0248e37c9ccdc79c0cef39aaed",
+    "h1:edXOJWE4ORX8Fm+dpVpICzMZJat4AX0VRCAy/xkcOc0=",
+    "zh:054b8dd49f0549c9a7cc27d159e45327b7b65cf404da5e5a20da154b90b8a644",
+    "zh:0b97bf8d5e03d15d83cc40b0530a1f84b459354939ba6f135a0086c20ebbe6b2",
+    "zh:1589a2266af699cbd5d80737a0fe02e54ec9cf2ca54e7e00ac51c7359056f274",
+    "zh:6330766f1d85f01ae6ea90d1b214b8b74cc8c1badc4696b165b36ddd4cc15f7b",
+    "zh:7c8c2e30d8e55291b86fcb64bdf6c25489d538688545eb48fd74ad622e5d3862",
+    "zh:99b1003bd9bd32ee323544da897148f46a527f622dc3971af63ea3e251596342",
+    "zh:9b12af85486a96aedd8d7984b0ff811a4b42e3d88dad1a3fb4c0b580d04fa425",
+    "zh:9f8b909d3ec50ade83c8062290378b1ec553edef6a447c56dadc01a99f4eaa93",
+    "zh:aaef921ff9aabaf8b1869a86d692ebd24fbd4e12c21205034bb679b9caf883a2",
+    "zh:ac882313207aba00dd5a76dbd572a0ddc818bb9cbf5c9d61b28fe30efaec951e",
+    "zh:bb64e8aff37becab373a1a0cc1080990785304141af42ed6aa3dd4913b000421",
+    "zh:dfe495f6621df5540d9c92ad40b8067376350b005c637ea6efac5dc15028add4",
+    "zh:f0ddf0eaf052766cfe09dea8200a946519f653c384ab4336e2a4a64fdd6310e9",
+    "zh:f1b7e684f4c7ae1eed272b6de7d2049bb87a0275cb04dbb7cda6636f600699c9",
+    "zh:ff461571e3f233699bf690db319dfe46aec75e58726636a0d97dd9ac6e32fb70",
   ]
 }
 
