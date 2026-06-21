@@ -106,7 +106,7 @@ variable "rancher_pool_numworkersmax" {
 }
 
 variable "rancher_cloud_credential_name" {
-  description = "Rancher cloud credential name used by downstream machine pools."
+  description = "Rancher cloud_credential_secret_name value used by downstream machine pools (for example cattle-global-data:vcenter-cred)."
   type        = string
   default     = "vcenter-cred"
 }

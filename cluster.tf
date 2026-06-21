@@ -16,10 +16,6 @@ resource "rancher2_cloud_credential" "minio_local_secret" {
   }
 }
 
-data "rancher2_cloud_credential" "vcenter_cred" {
-  name = var.rancher_cloud_credential_name
-}
-
 locals {
   cp_machine_config_kind     = var.use_existing_machine_configs ? var.cp_machine_config_kind : rancher2_machine_config_v2.ranchmaster[0].kind
   cp_machine_config_name     = var.use_existing_machine_configs ? var.cp_machine_config_name : rancher2_machine_config_v2.ranchmaster[0].name
@@ -30,7 +26,7 @@ locals {
 resource "rancher2_cluster_v2" "rancher_cluster" {
   name                         = local.cluster_name_effective
   kubernetes_version           = var.rke2_version
-  cloud_credential_secret_name = data.rancher2_cloud_credential.vcenter_cred.id
+  cloud_credential_secret_name = var.rancher_cloud_credential_name
   enable_network_policy        = false
 
   local_auth_endpoint {
@@ -40,7 +36,7 @@ resource "rancher2_cluster_v2" "rancher_cluster" {
   rke_config {
     machine_pools {
       name                         = "pool-masters"
-      cloud_credential_secret_name = data.rancher2_cloud_credential.vcenter_cred.id
+      cloud_credential_secret_name = var.rancher_cloud_credential_name
       control_plane_role           = true
       etcd_role                    = true
       worker_role                  = false
@@ -55,7 +51,7 @@ resource "rancher2_cluster_v2" "rancher_cluster" {
 
     machine_pools {
       name                         = "pool-workers"
-      cloud_credential_secret_name = data.rancher2_cloud_credential.vcenter_cred.id
+      cloud_credential_secret_name = var.rancher_cloud_credential_name
       control_plane_role           = false
       etcd_role                    = false
       worker_role                  = true
