@@ -3,19 +3,19 @@ terraform {
 
   required_providers {
     minio = {
-      source  = "aminueza/minio"
+      source  = "nexus.ta.domain.thedaily.tv/aminueza/minio"
       version = "~> 2.2"
     }
     rancher2 = {
-      source  = "rancher/rancher2"
+      source  = "nexus.ta.domain.thedaily.tv/rancher/rancher2"
       version = "~> 7.2"
     }
     routeros = {
-      source  = "terraform-routeros/routeros"
+      source  = "nexus.ta.domain.thedaily.tv/terraform-routeros/routeros"
       version = "~> 1.37"
     }
     vault = {
-      source  = "hashicorp/vault"
+      source  = "nexus.ta.domain.thedaily.tv/hashicorp/vault"
       version = "~> 3.10"
     }
   }

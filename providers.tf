@@ -1,7 +1,7 @@
 provider "minio" {
   minio_server     = var.minio_server
-  minio_access_key = var.MINIO_ACCESS_KEY
-  minio_secret_key = var.MINIO_SECRET_KEY
+  minio_user       = var.MINIO_ACCESS_KEY
+  minio_password   = var.MINIO_SECRET_KEY
   minio_region     = var.minio_region
   minio_ssl        = true
 }
