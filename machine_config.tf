@@ -13,9 +13,9 @@ resource "rancher2_machine_config_v2" "ranchmaster" {
     datacenter        = var.datacenter
     folder            = var.folder
     creation_type     = "template"
-    cpu_count         = "8"
-    memory_size       = "16384"
-    disk_size         = "40960"
+    cpu_count         = tostring(var.cp_cpu_count)
+    memory_size       = tostring(var.cp_memory_mb)
+    disk_size         = tostring(var.cp_disk_size_mb)
     network           = var.network
     datastore_cluster = var.datastore_cluster
     pool              = var.pool
@@ -58,9 +58,9 @@ resource "rancher2_machine_config_v2" "ranchworker" {
     datacenter    = var.datacenter
     folder        = var.folder
     creation_type = "template"
-    cpu_count     = "8"
-    memory_size   = "8192"
-    disk_size     = "102400"
+    cpu_count     = tostring(var.worker_cpu_count)
+    memory_size   = tostring(var.worker_memory_mb)
+    disk_size     = tostring(var.worker_disk_size_mb)
     network       = var.network
     datastore     = var.datastore
     pool          = var.pool

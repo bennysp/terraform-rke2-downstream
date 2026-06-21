@@ -214,6 +214,42 @@ variable "vm_template" {
   default = "/HOME/vm/Templates/rockylinux-packer/template-rockylinux9"
 }
 
+variable "cp_cpu_count" {
+  description = "Control-plane VM vCPU count for generated machine config."
+  type        = number
+  default     = 8
+}
+
+variable "cp_memory_mb" {
+  description = "Control-plane VM memory size in MB for generated machine config."
+  type        = number
+  default     = 16384
+}
+
+variable "cp_disk_size_mb" {
+  description = "Control-plane VM disk size in MB for generated machine config."
+  type        = number
+  default     = 40960
+}
+
+variable "worker_cpu_count" {
+  description = "Worker VM vCPU count for generated machine config."
+  type        = number
+  default     = 8
+}
+
+variable "worker_memory_mb" {
+  description = "Worker VM memory size in MB for generated machine config."
+  type        = number
+  default     = 8192
+}
+
+variable "worker_disk_size_mb" {
+  description = "Worker VM disk size in MB for generated machine config."
+  type        = number
+  default     = 102400
+}
+
 variable "delaysec" {
   type    = string
   default = "360"
