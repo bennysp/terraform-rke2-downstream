@@ -2,9 +2,9 @@ terraform {
   required_version = ">= 1.6.0"
 
   required_providers {
-    minio = {
-      source  = "nexus.ta.domain.thedaily.tv/aminueza/minio"
-      version = "~> 2.2"
+    aws = {
+      source  = "nexus.ta.domain.thedaily.tv/hashicorp/aws"
+      version = "~> 5.0"
     }
     rancher2 = {
       source  = "nexus.ta.domain.thedaily.tv/rancher/rancher2"

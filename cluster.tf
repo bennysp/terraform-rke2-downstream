@@ -1,6 +1,5 @@
-resource "minio_s3_bucket" "cluster_backup_s3" {
+resource "aws_s3_bucket" "cluster_backup_s3" {
   bucket = "rancher-cluster-backup-${local.cluster_name_effective}"
-  acl    = "public"
 }
 
 resource "rancher2_cloud_credential" "minio_local_secret" {
@@ -73,7 +72,7 @@ resource "rancher2_cluster_v2" "rancher_cluster" {
       snapshot_retention = 60
 
       s3_config {
-        bucket                = minio_s3_bucket.cluster_backup_s3.bucket
+        bucket                = aws_s3_bucket.cluster_backup_s3.bucket
         cloud_credential_name = rancher2_cloud_credential.minio_local_secret.id
         folder                = "etcd-backup"
         endpoint              = local.rustfs_endpoint
